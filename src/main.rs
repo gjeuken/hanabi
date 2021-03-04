@@ -93,10 +93,13 @@ enum TurnRecord {
     Discard(Card),
 }
 
+type DeckSize = usize;
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct PlayerTurnRecord {
     player: Player,
     turn: TurnRecord,
+    deck_size: DeckSize,
 }
 
 impl Game {
@@ -173,6 +176,7 @@ fn play_turn(game: &Game, turn: &PlayerTurn) -> Option<Game> {
             game.moves.push(PlayerTurnRecord {
                 player: turn.player,
                 turn: TurnRecord::Play((card, correct)),
+                deck_size: game.deck.len()
             });
         },
         Turn::Hint(hint) => {
@@ -207,6 +211,7 @@ fn play_turn(game: &Game, turn: &PlayerTurn) -> Option<Game> {
             game.moves.push(PlayerTurnRecord {
                 player: turn.player,
                 turn: TurnRecord::Hint((hint.clone(), cardhints.len())),
+                deck_size: game.deck.len()
             });
         },
         Turn::Discard(card) => {
@@ -219,6 +224,7 @@ fn play_turn(game: &Game, turn: &PlayerTurn) -> Option<Game> {
             game.moves.push(PlayerTurnRecord {
                 player: turn.player,
                 turn: TurnRecord::Discard(card),
+                deck_size: game.deck.len()
             });
         },
     }

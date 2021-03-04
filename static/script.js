@@ -69,6 +69,7 @@ function render_game(game) {
 		}
 	});
 	$("#gamelog").empty();
+    lastRoundWarninig = 0;
 	game.moves.forEach(function(item, index) {
 		let msg = "<li>" + game.player_names[item.player] + " ";
 		if (item.turn.hasOwnProperty("Hint")) {
@@ -93,6 +94,10 @@ function render_game(game) {
 		}
 		msg += "</li>";
 		$("#gamelog").prepend(msg);
+        if (item.deck_size == 0 && lastRoundWarninig == 0) {
+	    	lastRoundWarninig = 1;
+		    $("#gamelog").prepend("<li><b>last round!</b></li>");
+		}
 	});
 	if (game.fuses == 0 || game.endgame_turns == 0) {
 		let ding3 = new Audio("/3ding.mp3");
