@@ -225,3 +225,7 @@ select:hover, button:hover, input:hover {
 	display: flex;
   	flex-direction: row;
 }
+
+.lastCards {
+	color: crimson;
+}

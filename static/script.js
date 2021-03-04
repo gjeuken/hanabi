@@ -28,6 +28,9 @@ function render_game(game) {
 		$("#discard").append(render_card(item));
 	});
 	$("#deck").html(game.deck.length);
+    if (game.deck.length == 5) {
+	    $("#deck").addClass("lastCards");
+    }
 	game.players.forEach(function(item, player) {
 		let tray = $("#players").first().children().eq(player).find(".cardrack");
 		let cards = item.cards.map((x) => (render_card(x)));
