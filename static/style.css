@@ -190,6 +190,7 @@ select:hover, button:hover, input:hover {
 #gamelog {
 	flex: 1;
 	overflow-y: scroll;
+	min-height: 20px;
 }
 
 #content {
