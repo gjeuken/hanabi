@@ -71,7 +71,7 @@ body {
 }
 
 #infobox > * {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 #infobox > div > h2 {
@@ -192,7 +192,8 @@ select:hover, button:hover, input:hover {
 #gamelog {
 	flex: 1;
 	overflow-y: scroll;
-	min-height: 20px;
+	min-height: 60px;
+	margin-block-start: 0px;
 }
 
 #content {
@@ -224,6 +225,7 @@ select:hover, button:hover, input:hover {
 #deck-and-fuses {
 	display: flex;
   	flex-direction: row;
+	align-items: center;
 }
 
 .lastCards {
