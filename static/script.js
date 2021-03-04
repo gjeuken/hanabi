@@ -89,7 +89,7 @@ function render_game(game) {
 			msg += "discarded <b>" + item.turn.Discard.color + " " + item.turn.Discard.number + "</b>";
 		}
 		msg += "</li>";
-		$("#gamelog").append(msg);
+		$("#gamelog").prepend(msg);
 	});
 	if (game.fuses == 0 || game.endgame_turns == 0) {
 		let ding3 = new Audio("/3ding.mp3");
