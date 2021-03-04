@@ -109,9 +109,9 @@ function render_game(game) {
 			msg += "legendary, everyone left speechless, stars in their eyes!";
 		}
 		msg += " (" + getScore() + ")</li>";
-		$("#gamelog").append(msg);
+		$("#gamelog").prepend(msg);
 	}
-	$("#gamelog").scrollTop($("#gamelog")[0].scrollHeight);
+	// $("#gamelog").scrollTop($("#gamelog")[0].scrollHeight);
 }
 
 function getScore() {
