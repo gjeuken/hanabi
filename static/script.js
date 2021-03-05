@@ -24,6 +24,7 @@ function render_game(game) {
 	}
 	$("#fuses").css("background-image", "url('/fuse" + game.fuses + ".png')").css("background-size", "80px 80px").css("flex-shrink", "0").html((game.fuses > 0) ? game.fuses : "");
 	$("#discard").empty();
+    game.discard.sort((a, b) => (a.color > b.color) ? 1 : (a.color === b.color) ? ((a.number > b.number) ? 1 : -1) : -1 ); // Sorts the discarted cards by color and number
 	game.discard.forEach(function(item, index) {
 		$("#discard").append(render_card(item));
 	});
