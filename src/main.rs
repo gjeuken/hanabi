@@ -23,11 +23,11 @@ use std::sync::{Arc, Mutex};
 
 #[derive(Clone, Debug, Hash, PartialEq, Eq, Serialize, Deserialize)]
 enum Color {
-    Red,
-    Green,
-    Blue,
-    White,
-    Yellow,
+    Vermelho,
+    Verde,
+    Azul,
+    Branco,
+    Amarelo,
 }
 
 type Number = u8;
@@ -105,7 +105,7 @@ struct PlayerTurnRecord {
 impl Game {
     fn new(num_players: usize) -> Self {
         let mut deck = vec![];
-        for color in [Color::Red, Color::Green, Color::Blue, Color::White, Color::Yellow].iter() {
+        for color in [Color::Vermelho, Color::Verde, Color::Azul, Color::Branco, Color::Amarelo].iter() {
             for (number, occurences) in [(1, 3), (2, 2), (3, 2), (4, 2), (5, 1)].iter() {
                 for _ in 0..*occurences {
                     deck.push(Card {

@@ -130,23 +130,23 @@ select:hover, button:hover, input:hover {
 	font-size: 25px;
 }
 
-.color-blue {
+.color-azul {
 	background-color: deepskyblue !important;
 }
 
-.color-white {
+.color-branco {
 	background-color: mintcream !important;
 }
 
-.color-red {
+.color-vermelho {
 	background-color: tomato !important;
 }
 
-.color-yellow {
+.color-amarelo {
 	background-color: gold !important;
 }
 
-.color-green {
+.color-verde {
 	background-color: yellowgreen !important;
 }
 

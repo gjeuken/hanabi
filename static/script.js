@@ -80,8 +80,8 @@ function render_game(game) {
 	game.moves.forEach(function(item, index) {
 		let msg = "<li>" + game.player_names[item.player] + " ";
 		if (item.turn.hasOwnProperty("Hint")) {
-			const number_to_word = { 1: "one", 2: "two", 3: "three", 4: "four", 5: "five" };
-			msg += "hinted " + game.player_names[item.turn.Hint[0].player] + " " + number_to_word[item.turn.Hint[1]] + " <b>";
+			const number_to_word = { 1: "um", 2: "dois", 3: "três", 4: "quatro", 5: "cinco" };
+			msg += "deu dica a " + game.player_names[item.turn.Hint[0].player] + " " + number_to_word[item.turn.Hint[1]] + " <b>";
 			if (item.turn.Hint[0].data.hasOwnProperty("Number")) {
 				msg += item.turn.Hint[0].data.Number;
 			} else if (item.turn.Hint[0].data.hasOwnProperty("Color")) {
@@ -92,18 +92,18 @@ function render_game(game) {
 			}
 			msg += "</b>";
 		} else if (item.turn.hasOwnProperty("Play")) {
-			msg += "played <b>" + item.turn.Play[0].color + " " + item.turn.Play[0].number + "</b>";
+			msg += "jogou <b>" + item.turn.Play[0].color + " " + item.turn.Play[0].number + "</b>";
 			if (!item.turn.Play[1]) {
-				msg += ", and set off a fuse :(";
+				msg += ", e queimou um pavio :(";
 			}
 		} else if (item.turn.hasOwnProperty("Discard")) {
-			msg += "discarded <b>" + item.turn.Discard.color + " " + item.turn.Discard.number + "</b>";
+			msg += "descartou <b>" + item.turn.Discard.color + " " + item.turn.Discard.number + "</b>";
 		}
 		msg += "</li>";
 		$("#gamelog").prepend(msg);
         if (item.deck_size == 0 && lastRoundWarninig == 0) {
 	    	lastRoundWarninig = 1;
-		    $("#gamelog").prepend("<li><b>last round!</b></li>");
+		    $("#gamelog").prepend("<li><b>última rodada!</b></li>");
 		}
 	});
 	if (game.fuses == 0 || game.endgame_turns == 0) {
@@ -112,19 +112,19 @@ function render_game(game) {
 		    ding3.play();
 		    playedFinalSound = 1;
 		}
-		let msg = "<li>game over: "
+		let msg = "<li>fim de jogo: "
 		if (getScore() <= 5) {
-			msg += "horrible, booed by the crowd...";
+			msg += "horrível, vaiado pela plateia...";
 		} else if (getScore() <= 10) {
-			msg += "mediocre, just a hint of scattered applause...";
+			msg += "medíocre, alguns poucos aplausos...";
 		} else if (getScore() <= 15) {
-			msg += "honorable attempt, but quickly forgotten...";
+			msg += "boa tentatica, mas logo esquecida...";
 		} else if (getScore() <= 20) {
-			msg += "excellent, crowd pleasing.";
+			msg += "excelente, a plateia gostou.";
 		} else if (getScore() <= 24) {
-			msg += "amazing, they will be talking about it for weeks!";
+			msg += "incrível, vão falar disso por semanas!";
 		} else if (getScore() == 25) {
-			msg += "legendary, everyone left speechless, stars in their eyes!";
+			msg += "legendário, todos ficaram sem poder falar, com os olhos cintilando!";
 		}
 		msg += " (" + getScore() + ")</li>";
 		$("#gamelog").prepend(msg);
@@ -209,7 +209,7 @@ function giveHint(hint) {
 }
 
 $(document).ready(function() {
-	name = window.prompt("what's your name?");
+	name = window.prompt("qual o seu nome?");
 
 	gameid = window.location.pathname.split("/").slice(-1)[0];
 
