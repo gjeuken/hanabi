@@ -17,12 +17,18 @@ function render_card(card) {
 	return c;
 }
 
+numberOfFuses = 3;
 function render_game(game) {
 	$("#hints").empty();
 	for (i=0; i<game.hints; i++) {
 		$("#hints").append("<img class='token' draggable='false' src='/time_token.png'/>");
 	}
 	$("#fuses").css("background-image", "url('/fuse" + game.fuses + ".png')").css("background-size", "80px 80px").css("flex-shrink", "0").html((game.fuses > 0) ? game.fuses : "");
+    if (game.fuses != numberOfFuses) {
+	    numberOfFuses -= 1;
+	    let ding3 = new Audio("/wrong.mp3");
+        ding3.play();
+    }
 	$("#discard").empty();
     game.discard.sort((a, b) => (a.color > b.color) ? 1 : (a.color === b.color) ? ((a.number > b.number) ? 1 : -1) : -1 ); // Sorts the discarted cards by color and number
 	game.discard.forEach(function(item, index) {
