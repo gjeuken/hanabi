@@ -101,8 +101,11 @@ function render_game(game) {
 		}
 	});
 	if (game.fuses == 0 || game.endgame_turns == 0) {
-		let ding3 = new Audio("/3ding.mp3");
-		ding3.play();
+		if (typeof playedFinalSound === 'undefined') {
+		    let ding3 = new Audio("/3ding.mp3");
+		    ding3.play();
+		    playedFinalSound = 1;
+		}
 		let msg = "<li>game over: "
 		if (getScore() <= 5) {
 			msg += "horrible, booed by the crowd...";
