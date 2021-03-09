@@ -19,6 +19,21 @@ function render_card(card) {
 
 numberOfFuses = 3;
 function render_game(game) {
+	$("#hintplayer").empty();
+	if (game.players.length > 2) {
+		$("#hintplayer").append("<option>—</option>")
+	}
+	game.player_names.forEach(function(item, index) {
+		let name = $("#players").first().children().eq(index).find(".playername");
+		name.removeClass("activeplayer");
+		name.html(item);
+		if (index == game.turn) {
+			name.addClass("activeplayer");
+		}
+		if (index != playerNumber()) {
+			$("#hintplayer").append("<option value='"+item+"'>"+item+"</option>")
+		}
+	});
 	$("#hints").empty();
 	for (i=0; i<game.hints; i++) {
 		$("#hints").append("<img class='token' draggable='false' src='/time_token.png'/>");
@@ -59,21 +74,6 @@ function render_game(game) {
 	Object.entries(game.played).forEach(function(item, index) {
 		let color = ".color-" + item[0].toLowerCase();
 		$("#played > .cardrack").find(color).html(item[1]).show();
-	});
-	$("#hintplayer").empty();
-	if (game.players.length > 2) {
-		$("#hintplayer").append("<option>—</option>")
-	}
-	game.player_names.forEach(function(item, index) {
-		let name = $("#players").first().children().eq(index).find(".playername");
-		name.removeClass("activeplayer");
-		name.html(item);
-		if (index == game.turn) {
-			name.addClass("activeplayer");
-		}
-		if (index != playerNumber()) {
-			$("#hintplayer").append("<option value='"+item+"'>"+item+"</option>")
-		}
 	});
 	$("#gamelog").empty();
     lastRoundWarninig = 0;
