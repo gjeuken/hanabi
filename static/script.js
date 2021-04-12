@@ -45,7 +45,7 @@ function render_game(game) {
         ding3.play();
     }
 	$("#discard").empty();
-    game.discard.sort((a, b) => (a.color > b.color) ? 1 : (a.color === b.color) ? ((a.number > b.number) ? 1 : -1) : -1 ); // Sorts the discarted cards by color and number
+    // game.discard.sort((a, b) => (a.color > b.color) ? 1 : (a.color === b.color) ? ((a.number > b.number) ? 1 : -1) : -1 ); // Sorts the discarted cards by color and number
 	game.discard.forEach(function(item, index) {
 		$("#discard").append(render_card(item));
 	});
